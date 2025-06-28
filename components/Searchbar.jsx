@@ -14,34 +14,47 @@ const MovieSearchBar = ({ onSearch, onSelectMovie }) => {
 
     // Mock API call function (replace with your actual API)
     const searchMoviesAPI = async (query) => {
-        await new Promise(resolve => setTimeout(resolve, 300));
+        // await new Promise(resolve => setTimeout(resolve, 300));
 
-        const mockMovies = [
-            { id: 1, title: "The Shawshank Redemption", year: "1994", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=TSR" },
-            { id: 2, title: "The Godfather", year: "1972", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=TGF" },
-            { id: 3, title: "The Dark Knight", year: "2008", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=TDK" },
-            { id: 4, title: "Pulp Fiction", year: "1994", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=PF" },
-            { id: 5, title: "Forrest Gump", year: "1994", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=FG" },
-            { id: 6, title: "Inception", year: "2010", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=INC" },
-            { id: 7, title: "Fight Club", year: "1999", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=FC" },
-            { id: 8, title: "Interstellar", year: "2014", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=INT" },
-            { id: 9, title: "The Matrix", year: "1999", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=MTX" },
-            { id: 10, title: "Gladiator", year: "2000", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=GLD" },
-            { id: 11, title: "Titanic", year: "1997", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=TTN" },
-            { id: 12, title: "Avatar", year: "2009", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=AVT" },
-            { id: 13, title: "The Lord of the Rings: Return of the King", year: "2003", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=LOTR" },
-            { id: 14, title: "The Avengers", year: "2012", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=AVG" },
-            { id: 15, title: "Avengers: Endgame", year: "2019", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=END" },
-            { id: 16, title: "Joker", year: "2019", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=JKR" },
-            { id: 17, title: "The Lion King", year: "1994", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=TLK" },
-            { id: 18, title: "Harry Potter and the Sorcerer's Stone", year: "2001", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=HP" },
-            { id: 19, title: "Spirited Away", year: "2001", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=SA" },
-            { id: 20, title: "Parasite", year: "2019", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=PRS" }
-        ];
+        // const mockMovies = [
+        //     { id: 1, title: "The Shawshank Redemption", year: "1994", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=TSR" },
+        //     { id: 2, title: "The Godfather", year: "1972", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=TGF" },
+        //     { id: 3, title: "The Dark Knight", year: "2008", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=TDK" },
+        //     { id: 4, title: "Pulp Fiction", year: "1994", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=PF" },
+        //     { id: 5, title: "Forrest Gump", year: "1994", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=FG" },
+        //     { id: 6, title: "Inception", year: "2010", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=INC" },
+        //     { id: 7, title: "Fight Club", year: "1999", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=FC" },
+        //     { id: 8, title: "Interstellar", year: "2014", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=INT" },
+        //     { id: 9, title: "The Matrix", year: "1999", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=MTX" },
+        //     { id: 10, title: "Gladiator", year: "2000", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=GLD" },
+        //     { id: 11, title: "Titanic", year: "1997", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=TTN" },
+        //     { id: 12, title: "Avatar", year: "2009", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=AVT" },
+        //     { id: 13, title: "The Lord of the Rings: Return of the King", year: "2003", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=LOTR" },
+        //     { id: 14, title: "The Avengers", year: "2012", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=AVG" },
+        //     { id: 15, title: "Avengers: Endgame", year: "2019", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=END" },
+        //     { id: 16, title: "Joker", year: "2019", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=JKR" },
+        //     { id: 17, title: "The Lion King", year: "1994", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=TLK" },
+        //     { id: 18, title: "Harry Potter and the Sorcerer's Stone", year: "2001", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=HP" },
+        //     { id: 19, title: "Spirited Away", year: "2001", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=SA" },
+        //     { id: 20, title: "Parasite", year: "2019", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=PRS" }
+        // ];
 
-        return mockMovies.filter(movie =>
-            movie.title.toLowerCase().includes(query.toLowerCase())
-        );
+
+        // return mockMovies.filter(movie =>
+        //     movie.title.toLowerCase().includes(query.toLowerCase())
+        // );
+
+        const response = await fetch(`http://127.0.0.1:5000/get-title-suggestions/${query}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        return data
     };
 
     const debouncedSearch = (value) => {
@@ -188,11 +201,11 @@ const MovieSearchBar = ({ onSearch, onSelectMovie }) => {
                         <div className="p-2">
                             {suggestions.map((movie, index) => (
                                 <div
-                                    key={movie.id}
+                                    key={movie.movie_id}
                                     onClick={() => handleSuggestionClick(movie)}
                                     className={`flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all duration-200 ${index === focusedIndex
-                                            ? 'bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30'
-                                            : 'hover:bg-slate-700/50'
+                                        ? 'bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30'
+                                        : 'hover:bg-slate-700/50'
                                         }`}
                                 >
                                     {/* Movie Poster */}
@@ -205,7 +218,7 @@ const MovieSearchBar = ({ onSearch, onSelectMovie }) => {
                                     {/* Movie Info */}
                                     <div className="flex-1 min-w-0">
                                         <h4 className="text-white font-medium truncate">{movie.title}</h4>
-                                        <p className="text-slate-400 text-sm">{movie.year}</p>
+                                        <p className="text-slate-400 text-sm">{movie.release_date ? movie.release_date.split("-")[0] : "N/A"}</p>
                                     </div>
 
                                     {/* Arrow Icon */}

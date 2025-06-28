@@ -8,14 +8,30 @@ const MovieCard = ({
     genre = "Action, Drama"
 }) => {
 
-    const handleRecommendSimilar = () => {
+    const handleRecommendSimilar = async () => {
         console.log(`Finding similar movies to: ${movieName}`);
         // Add your recommendation logic here
+
+        const response = await fetch(`http://127.0.0.1:5000/recommend/${movieName}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+
+        if (!response.ok) {
+            console.error('Failed to fetch recommendations');
+            return;
+        }       
+
+        const data = await response.json();
+        console.log('Recommended movies:', data);
     };
 
     return (
-        <div className="group relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 ease-out max-w-sm mx-auto">
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div className="group relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 ease-out w-80">
+            {/* Gradient overlay for depth */}
+            {/* <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div> */}
 
             {/* Poster Image */}
             <div className="relative overflow-hidden">
@@ -34,7 +50,7 @@ const MovieCard = ({
             {/* Content */}
             <div className="p-6 space-y-4">
                 {/* Movie Title */}
-                <h3 className="text-xl font-bold text-white leading-tight group-hover:text-blue-300 transition-colors duration-200">
+                <h3 className="text-xl font-bold text-white leading-tight group-hover:text-blue-300 transition-colors duration-200 break-words">
                     {movieName}
                 </h3>
 
@@ -43,7 +59,7 @@ const MovieCard = ({
                     {genre.split(',').map((g, index) => (
                         <span
                             key={index}
-                            className="px-3 py-1 bg-slate-700/50 text-slate-300 text-xs font-medium rounded-full border border-slate-600/50 backdrop-blur-sm"
+                            className="px-3 py-1 bg-slate-700/50 text-slate-300 text-xs font-medium rounded-full border border-slate-600/50 backdrop-blur-sm break-words"
                         >
                             {g.trim()}
                         </span>
@@ -52,7 +68,7 @@ const MovieCard = ({
 
                 {/* Recommend Button */}
                 <button
-                    onClick={() => handleRecommendSimilar()}
+                    onClick={handleRecommendSimilar}
                     className="w-full mt-4 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700 hover:from-blue-700 hover:via-purple-700 hover:to-blue-800 text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-500/30"
                 >
                     <span className="flex items-center justify-center gap-2">
