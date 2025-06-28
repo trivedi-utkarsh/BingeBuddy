@@ -12,6 +12,8 @@ similarity = pickle.load(open('similarity.pkl', 'rb'))
 movies = pd.DataFrame(movies_dict)
 
 print(movies)
+
+@app.route('/fetch-poster/<int:movie_id>', methods=['GET'])
 def fetch_poster(movie_id):
     try:
         url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key=8265bd1679663a7ea12ac168da84d2e8&language=en-US"
@@ -26,10 +28,20 @@ def fetch_poster(movie_id):
         print(f"Error fetching poster: {e}")
         return "https://via.placeholder.com/500x750?text=Error"
 
+@app.route('/get-title-suggestions/<string:query>', methods=['GET'])
+def get_title_suggestions(query):
+    if not query:
+        return jsonify([])
+
+    filtered_movies = movies[movies['title'].str.contains(query, case=False, na=False)]
+    
+    suggestions = filtered_movies[['title', 'movie_id', 'release_date']].head(10).to_dict(orient='records')
+    
+    return jsonify(suggestions)
+
 @app.route('/movies', methods=['GET'])
 def get_movies():
-    # Returns only titles and movie_ids for dropdowns or display
-    return jsonify(movies[['movie_id', 'title']].to_dict(orient='records'))
+    return jsonify(movies[['movie_id', 'title', 'release_date', 'genres']].head(60).to_dict(orient='records'))
 
 @app.route('/recommend/<string:movie_title>', methods=['GET'])
 def recommend(movie_title):
@@ -41,11 +53,17 @@ def recommend(movie_title):
     distances = sorted(list(enumerate(similarity[index])), reverse=True, key=lambda x: x[1])
     recommended = []
 
-    for i in distances[1:6]:  # top 5 excluding itself
+    for i in distances[1:6]:  # Top 5 excluding the movie itself
+        movie_row = movies.iloc[i[0]]
+
         movie_info = {
-            "title": movies.iloc[i[0]].title,
-            "poster": fetch_poster(movies.iloc[i[0]].movie_id)
+            "movie_id": int(movie_row.movie_id),
+            "title": movie_row.title,
+            "release_date": str(movie_row.release_date),
+            "genres": movie_row.genres,
+            # "poster": fetch_poster(int(movie_row.movie_id)) if 'fetch_poster' in globals() else ""
         }
+
         recommended.append(movie_info)
 
     return jsonify(recommended)
