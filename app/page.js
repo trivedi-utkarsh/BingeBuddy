@@ -149,15 +149,16 @@ export default function Home() {
 		<div className="mt-12">
 			{/* Page Header */}
 			<div className="max-w-7xl mx-auto mb-12">
-				<h1 className="text-4xl md:text-5xl font-bold text-center bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent mb-4">
-					Welcome to BingeBuddy
+				<h1 className="font-fancy font-bold text-2xl md:text-5xl text-center text-white mb-4">
+					Welcome to
 				</h1>
-				<p className="text-slate-400 text-center text-lg max-w-2xl mx-auto mb-8">
-					Discover amazing movies and find your next favorite film
+				<h1 className="font-fancy font-bold text-2xl md:text-5xl text-center text-white text-transparent mb-4">BingeBuddy</h1>
+				<p className="text-white text-center text-lg max-w-2xl mx-auto mt-10">
+					We know what you'll love—because it's built just for you
 				</p>
 
 				{/* Search Bar */}
-				<div className="mb-12">
+				<div className="mb-12 mt-5">
 					<MovieSearchBar
 						onSearch={handleSearch}
 						onSelectMovie={handleSelectMovie}
@@ -166,7 +167,7 @@ export default function Home() {
 			</div>
 
 			{/* Movie Cards Grid */}
-			<div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-x-16 gap-y-8">
+			<div className="max-w-screen mx-auto flex flex-wrap justify-center gap-x-5 gap-y-8">
 
 				{isLoading ? (
 					Array.from({ length: 12 }).map((_, index) => (

@@ -19,10 +19,21 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="true"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Playwrite+CU:wght@100..400&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
       >
-        {/* Background Video */}
         <video
           autoPlay
           loop
@@ -33,7 +44,7 @@ export default function RootLayout({ children }) {
           <source src="/background.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        
+
         <div className="fixed top-0 left-0 w-full h-full bg-black/60 -z-10" />
 
         {/* Page Content */}
