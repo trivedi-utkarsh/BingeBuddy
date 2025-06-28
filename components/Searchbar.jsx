@@ -39,7 +39,6 @@ const MovieSearchBar = ({ onSearch, onSelectMovie }) => {
             { id: 20, title: "Parasite", year: "2019", poster: "https://via.placeholder.com/50x75/1f2937/ffffff?text=PRS" }
         ];
 
-
         return mockMovies.filter(movie =>
             movie.title.toLowerCase().includes(query.toLowerCase())
         );
