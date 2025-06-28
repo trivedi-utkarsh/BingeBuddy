@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import BackgroundVideo from "./BackgroundVideo"; // adjust if your path is different
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,17 +35,10 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
       >
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="fixed top-0 left-0 w-full h-full object-cover -z-10"
-        >
-          <source src="/background.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        {/* Video Background Logic Moved Out */}
+        <BackgroundVideo />
 
+        {/* Overlay */}
         <div className="fixed top-0 left-0 w-full h-full bg-black/60 -z-10" />
 
         {/* Page Content */}
