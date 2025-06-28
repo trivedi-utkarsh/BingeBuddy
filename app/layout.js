@@ -1,5 +1,100 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import MovieCard from "@/components/MovieCard";
+
+const movieData = [
+  {
+    poster: "https://via.placeholder.com/300x450/1f2937/ffffff?text=The+Last+Shadow",
+    movieName: "The Last Shadow",
+    releaseYear: "2023",
+    genre: "Sci-Fi, Thriller"
+  },
+  {
+    poster: "https://via.placeholder.com/300x450/1f2937/ffffff?text=Echoes+of+War",
+    movieName: "Echoes of War",
+    releaseYear: "2022",
+    genre: "War, Drama"
+  },
+  {
+    poster: "https://via.placeholder.com/300x450/1f2937/ffffff?text=Neon+Revolt",
+    movieName: "Neon Revolt",
+    releaseYear: "2024",
+    genre: "Action, Cyberpunk"
+  },
+  {
+    poster: "https://via.placeholder.com/300x450/1f2937/ffffff?text=Frostbite",
+    movieName: "Frostbite",
+    releaseYear: "2021",
+    genre: "Horror, Mystery"
+  },
+  {
+    poster: "https://via.placeholder.com/300x450/1f2937/ffffff?text=Crimson+Sky",
+    movieName: "Crimson Sky",
+    releaseYear: "2020",
+    genre: "Adventure, Fantasy"
+  },
+  {
+    poster: "https://via.placeholder.com/300x450/1f2937/ffffff?text=Silent+Truth",
+    movieName: "Silent Truth",
+    releaseYear: "2024",
+    genre: "Crime, Drama"
+  },
+  {
+    poster: "https://via.placeholder.com/300x450/1f2937/ffffff?text=Quantum+Fall",
+    movieName: "Quantum Fall",
+    releaseYear: "2023",
+    genre: "Sci-Fi, Action"
+  },
+  {
+    poster: "https://via.placeholder.com/300x450/1f2937/ffffff?text=Moonlit+Road",
+    movieName: "Moonlit Road",
+    releaseYear: "2019",
+    genre: "Romance, Drama"
+  },
+  {
+    poster: "https://via.placeholder.com/300x450/1f2937/ffffff?text=Burning+Code",
+    movieName: "Burning Code",
+    releaseYear: "2022",
+    genre: "Thriller, Tech"
+  },
+  {
+    poster: "https://via.placeholder.com/300x450/1f2937/ffffff?text=Rise+of+Legends",
+    movieName: "Rise of Legends",
+    releaseYear: "2021",
+    genre: "Fantasy, Action"
+  },
+  {
+    poster: "https://via.placeholder.com/300x450/1f2937/ffffff?text=Deadlock",
+    movieName: "Deadlock",
+    releaseYear: "2023",
+    genre: "Action, Crime"
+  },
+  {
+    poster: "https://via.placeholder.com/300x450/1f2937/ffffff?text=Eternal+Whispers",
+    movieName: "Eternal Whispers",
+    releaseYear: "2020",
+    genre: "Mystery, Drama"
+  },
+  {
+    poster: "https://via.placeholder.com/300x450/1f2937/ffffff?text=Digital+Storm",
+    movieName: "Digital Storm",
+    releaseYear: "2024",
+    genre: "Sci-Fi, Thriller"
+  },
+  {
+    poster: "https://via.placeholder.com/300x450/1f2937/ffffff?text=The+Broken+Wing",
+    movieName: "The Broken Wing",
+    releaseYear: "2018",
+    genre: "Drama, Romance"
+  },
+  {
+    poster: "https://via.placeholder.com/300x450/1f2937/ffffff?text=Veil+of+Secrets",
+    movieName: "Veil of Secrets",
+    releaseYear: "2022",
+    genre: "Mystery, Thriller"
+  }
+]
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +129,18 @@ export default function RootLayout({ children }) {
           Your browser does not support the video tag.
         </video>
         <div className="fixed top-0 left-0 w-full h-full bg-black/60 -z-10" />
+
+        {/* {movieData.map((movie, index) => {
+          return (
+            <MovieCard
+              key={index}
+              poster={movie.poster}
+              movieName={movie.movieName}
+              releaseYear={movie.releaseYear}
+              genre={movie.genre}
+            />
+          );
+        })} */}
 
         {/* Page Content */}
         <main className="relative z-10">{children}</main>
