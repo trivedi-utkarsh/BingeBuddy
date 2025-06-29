@@ -3,6 +3,7 @@ import MovieCard from "@/components/MovieCard";
 import MovieSearchBar from "@/components/Searchbar";
 import { useState, useEffect } from "react";
 import MovieCardLoading from "@/components/MovieCardSkeleton";
+import { useRouter } from "next/navigation";
 
 // const movieData = [
 //   {
@@ -101,14 +102,14 @@ export default function Home() {
 
 	const [movieData, setMovieData] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
+	const router = useRouter();
 
 	const handleSearch = (searchTerm) => {
-		console.log('Searching for:', searchTerm);
+		router.push(`/movies?query=${searchTerm}`);
 	};
 
-	const handleSelectMovie = (movie) => {
-		console.log('Selected movie:', movie);
-		// Handle movie selection from suggestions
+	const handleSelectMovie = (movie_id) => {
+		router.push(`/movies?id=${movie_id}`);
 	};
 
 	const fetchMovies = async () => {
@@ -133,6 +134,8 @@ export default function Home() {
 			// }	
 
 			setMovieData(data);
+
+			console.log('Fetched movies:', data);
 		} catch (error) {
 			console.error('Error fetching movies:', error);
 			setMovieData([]);
