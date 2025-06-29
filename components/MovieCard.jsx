@@ -5,24 +5,18 @@ const MovieCard = ({
   poster = "https://via.placeholder.com/300x450/1f2937/ffffff?text=Movie+Poster",
   movieName = "Sample Movie Title",
   releaseYear = "2024",
-  genre = "Action, Drama"
+  genre = "Action, Drama",
+  onButtonClick,
+  isLoadingRecommendations = false,
 }) => {
 
-  const handleRecommendSimilar = async () => {
-    console.log(`Finding similar movies to: ${movieName}`);
-    try {
-      const response = await fetch(`http://127.0.0.1:5000/recommend/${movieName}`);
-      if (!response.ok) throw new Error('Failed to fetch recommendations');
-      const data = await response.json();
-      console.log('Recommended movies:', data);
-    } catch (err) {
-      console.error(err.message);
-    }
+  const handleRecommendSimilar = () => {
+    onButtonClick?.(movieName)
   };
 
   return (
     <div className="group relative bg-slate-800/40 backdrop-blur-lg rounded-3xl overflow-hidden shadow-2xl hover:shadow-blue-500/30 hover:scale-[1.03] transition-all duration-300 ease-in-out w-80 border border-slate-700/50">
-      
+
       {/* Poster Image */}
       <div className="relative">
         <img
@@ -57,7 +51,7 @@ const MovieCard = ({
         </div>
 
         {/* Button */}
-        <button
+        {/* <button
           onClick={handleRecommendSimilar}
           className="w-full mt-3 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-3 px-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-200 active:scale-95"
         >
@@ -66,6 +60,30 @@ const MovieCard = ({
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
             Recommend Similar
+          </span>
+        </button> */}
+        <button
+          onClick={handleRecommendSimilar}
+          disabled={isLoadingRecommendations}
+          className="w-full mt-3 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 disabled:from-slate-500 disabled:to-slate-600 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-xl shadow-md hover:shadow-xl disabled:shadow-none transition-all duration-200 active:scale-95 disabled:active:scale-100"
+        >
+          <span className="flex items-center justify-center gap-2">
+            {isLoadingRecommendations ? (
+              <>
+                <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Loading...
+              </>
+            ) : (
+              <>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                Recommend Similar
+              </>
+            )}
           </span>
         </button>
       </div>

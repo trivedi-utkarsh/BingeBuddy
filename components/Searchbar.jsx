@@ -1,9 +1,8 @@
 'use client'
 
 import React, { useState, useEffect, useRef } from 'react';
-import { useRouter } from 'next/navigation';
 
-// router.push('/movies');
+const poster_cache = await import('../backend/poster_cache.json', { assert: { type: 'json' } });
 
 
 const MovieSearchBar = ({ onSearch, onSelectMovie, query = "" }) => {
@@ -12,7 +11,7 @@ const MovieSearchBar = ({ onSearch, onSelectMovie, query = "" }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [focusedIndex, setFocusedIndex] = useState(-1);
-    const router = useRouter();
+    // const router = useRouter();
 
     const searchRef = useRef(null);
     const debounceRef = useRef(null);
@@ -29,6 +28,12 @@ const MovieSearchBar = ({ onSearch, onSelectMovie, query = "" }) => {
             throw new Error('Network response was not ok');
         }
         const data = await response.json();
+
+        for (const movie of data) {
+            const posterUrl = poster_cache.default[movie.movie_id] || "https://via.placeholder.com/500x750?text=No+Image";
+            movie.poster = posterUrl;
+        }
+
         return data
     };
 
