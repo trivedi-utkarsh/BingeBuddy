@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import BackgroundVideo from "./BackgroundVideo"; // adjust if your path is different
+import BackgroundVideo from "../components/BackgroundVideo"; // adjust if your path is different
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

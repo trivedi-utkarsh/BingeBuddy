@@ -3,9 +3,19 @@ from flask_cors import CORS
 import pandas as pd
 import pickle
 import requests
+import os
+import json
 
 app = Flask(__name__)
 CORS(app)
+
+CACHE_FILE = 'poster_cache.json'
+
+if os.path.exists(CACHE_FILE):
+    with open(CACHE_FILE, 'r') as f:
+        poster_cache = json.load(f)
+else:
+    poster_cache = {}
 
 movies_dict = pickle.load(open('movies.pkl', 'rb'))
 similarity = pickle.load(open('similarity.pkl', 'rb'))
@@ -17,17 +27,37 @@ movies = pd.DataFrame(movies_dict)
 
 @app.route('/fetch-poster/<int:movie_id>', methods=['GET'])
 def fetch_poster(movie_id):
+    movie_id_str = str(movie_id)
+
+    # Return cached poster if available
+    if movie_id_str in poster_cache:
+        return poster_cache[movie_id_str]
+
     try:
-        url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key=8265bd1679663a7ea12ac168da84d2e8&language=en-US"
-        response = requests.get(url, timeout=100)
+        url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key=3a3df0278574dafae4254d863d38f4a4&language=en-US"
+        response = requests.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=10)
+        response.raise_for_status()
+
         data = response.json()
         poster_path = data.get('poster_path')
+
         if poster_path:
-            return f"https://image.tmdb.org/t/p/w500/{poster_path}"
+            poster_url = f"https://image.tmdb.org/t/p/w500/{poster_path}"
+
+            # Cache only valid posters
+            poster_cache[movie_id_str] = poster_url
+
+            # Save to disk
+            with open(CACHE_FILE, 'w') as f:
+                json.dump(poster_cache, f)
+
+            return poster_url
         else:
+            # No caching for missing posters
             return "https://via.placeholder.com/500x750?text=No+Image"
+
     except Exception as e:
-        print(f"Error fetching poster: {e}")
+        print(f"Error fetching poster for {movie_id}: {e}")
         return "https://via.placeholder.com/500x750?text=Error"
 
 @app.route('/get-title-suggestions/<string:query>', methods=['GET'])
@@ -68,7 +98,9 @@ def get_movie_by_id(movie_id):
 
 @app.route('/movies', methods=['GET'])
 def get_movies():
-    result = movies[['movie_id', 'title', 'release_date', 'genres']].head(60).to_dict(orient='records')
+    result = movies[['movie_id', 'title', 'release_date', 'genres']] \
+        .sample(n=60, random_state=None) \
+        .to_dict(orient='records')
     return jsonify(result)
 
 @app.route('/recommend/<string:movie_title>', methods=['GET'])

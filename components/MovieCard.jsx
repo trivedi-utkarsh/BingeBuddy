@@ -28,7 +28,7 @@ const MovieCard = ({
         <img
           src={poster}
           alt={`${movieName} poster`}
-          className="w-full h-64 object-cover rounded-t-3xl transition-transform duration-500 group-hover:scale-105 border-b border-slate-600/50"
+          className="w-full h-64 object-fit rounded-t-3xl transition-transform duration-500 group-hover:scale-105 border-b border-slate-600/50"
         />
 
         {/* Year badge */}
