@@ -20,6 +20,10 @@ export default function Home() {
 		router.push(`/movies?id=${movie.movie_id}`);
 	};
 
+	const handleRecommendSimilar = (movieName) => {
+		router.push(`/movies?recommend=${movieName}`);
+	}
+
 	const fetchMovies = async () => {
 		setIsLoading(true);
 		try {
@@ -108,6 +112,7 @@ export default function Home() {
 										: "N/A"
 								}
 								genre={movie.genres ? movie.genres.join(", ") : "N/A"}
+								onButtonClick={() => handleRecommendSimilar(movie.title)}
 							/>
 						);
 					})}

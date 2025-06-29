@@ -12,6 +12,7 @@ export default function MoviesPage() {
     const searchParams = useSearchParams();
     const query = searchParams.get('query');
     const movie_id = searchParams.get('id');
+    const inputRecommend = searchParams.get('recommend');
 
     const [movieData, setMovieData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -19,7 +20,7 @@ export default function MoviesPage() {
     const [showModal, setShowModal] = useState(false);
     const [recommendedMovies, setRecommendedMovies] = useState([]);
     const [isLoadingRecommendations, setIsLoadingRecommendations] = useState(false);
-    const [selectedMovieName, setSelectedMovieName] = useState('');
+    const [selectedMovieName, setSelectedMovieName] = useState(inputRecommend || '');
 
     const modalRef = useRef(null);
 
@@ -30,6 +31,10 @@ export default function MoviesPage() {
         } else if (movie_id) {
             console.log('Fetching movie by ID:', movie_id);
             fetchMovieById(movie_id);
+        }else if (inputRecommend) {
+            console.log('Fetching recommendations for:', inputRecommend);
+            getRecommendations(inputRecommend);
+            fetchMovies(inputRecommend)
         }
     }, [])
 
