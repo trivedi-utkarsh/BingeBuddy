@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 import pandas as pd
 import pickle
@@ -11,7 +11,9 @@ movies_dict = pickle.load(open('movies.pkl', 'rb'))
 similarity = pickle.load(open('similarity.pkl', 'rb'))
 movies = pd.DataFrame(movies_dict)
 
-print(movies)
+# print(movies)
+# duplicates = movies[movies.duplicated(subset=['title'], keep=False)]
+# print(duplicates)
 
 @app.route('/fetch-poster/<int:movie_id>', methods=['GET'])
 def fetch_poster(movie_id):
@@ -39,9 +41,35 @@ def get_title_suggestions(query):
     
     return jsonify(suggestions)
 
+@app.route('/get-movies/<query>', methods=['GET', 'OPTIONS'])
+def get_movies_by_title(query):
+    if request.method == 'OPTIONS':
+        return jsonify({}), 200
+    
+    print(f"Received query: {query}")
+
+    query = query.lower()
+    filtered = movies[movies['title'].str.lower().str.contains(query)]
+    result = filtered[['movie_id', 'title', 'release_date', 'genres']].head(15).to_dict(orient='records')
+
+    return jsonify(result)
+
+@app.route('/get-movie/<int:movie_id>', methods=['GET'])
+def get_movie_by_id(movie_id):    
+
+    movie = movies[movies['movie_id'] == movie_id]
+    if movie.empty:
+        return jsonify({"error": "Movie not found"}), 404
+
+    movie_info = movie.iloc[0].to_dict()
+    # movie_info['poster'] = fetch_poster(movie_id)
+    
+    return jsonify(movie_info)
+
 @app.route('/movies', methods=['GET'])
 def get_movies():
-    return jsonify(movies[['movie_id', 'title', 'release_date', 'genres']].head(60).to_dict(orient='records'))
+    result = movies[['movie_id', 'title', 'release_date', 'genres']].head(60).to_dict(orient='records')
+    return jsonify(result)
 
 @app.route('/recommend/<string:movie_title>', methods=['GET'])
 def recommend(movie_title):
