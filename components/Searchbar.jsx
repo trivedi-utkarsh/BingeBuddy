@@ -145,7 +145,7 @@ const MovieSearchBar = ({ onSearch, onSelectMovie, query = "" }) => {
                         onChange={handleInputChange}
                         onKeyDown={handleKeyDown}
                         placeholder="Search for movies..."
-                        className="w-full h-14 pl-12 pr-20 bg-gray-600 rounded-2xl text-white placeholder-white focus:outline-none focus:border-blue-500/50 focus:ring-4 focus:ring-blue-500/20 transition-all duration-300 backdrop-blur-sm shadow-lg group-hover:shadow-xl"
+                        className="w-full h-14 pl-12 pr-20 bg-gray-600 rounded-xl text-white placeholder-white focus:outline-none focus:border-blue-500/50 focus:ring-4 focus:ring-blue-500/20 transition-all duration-300 backdrop-blur-sm shadow-lg group-hover:shadow-xl"
                     />
 
                     {/* Search Icon */}
@@ -166,7 +166,7 @@ const MovieSearchBar = ({ onSearch, onSelectMovie, query = "" }) => {
                     <button
                         type="button"
                         onClick={handleSearch}
-                        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white p-2.5 rounded-xl transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
+                        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-red-700 to-orange-600 hover:from-blue-700 hover:to-purple-700 text-white p-2.5 rounded-xl transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
                     >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5-5 5M6 12h12" />

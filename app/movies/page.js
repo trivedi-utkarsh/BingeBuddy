@@ -270,7 +270,7 @@ export default function MoviesPage() {
                                                         className="w-full h-64 object-cover rounded-t-3xl transition-transform duration-500 group-hover:scale-105 border-b border-slate-600/50"
                                                     />
                                                     {/* Year badge */}
-                                                    <div className="absolute top-3 right-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                                                    <div className="absolute top-3 right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
                                                         {movie.release_date ? movie.release_date.split('-')[0] : 'N/A'}
                                                     </div>
                                                 </div>
@@ -278,9 +278,26 @@ export default function MoviesPage() {
                                                 {/* Content */}
                                                 <div className="p-5 space-y-3">
                                                     {/* Title */}
-                                                    <h3 className="text-lg sm:text-xl font-semibold text-white group-hover:text-blue-400 transition-colors duration-200 break-words leading-snug">
-                                                        {movie.title}
-                                                    </h3>
+                                                    {/* Title Row */}
+<div className="flex items-start justify-between">
+  <h3 className="text-lg sm:text-xl font-semibold text-white group-hover:text-red-600 transition-colors duration-200 break-words leading-snug">
+    {movie.title}
+  </h3>
+
+  <button
+    onClick={(e) => {
+      e.stopPropagation();
+      getRecommendations(movie.title);
+    }}
+    className="ml-2 bg-gradient-to-r from-red-700 to-orange-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold p-2 rounded-xl shadow-md hover:shadow-xl transition-all duration-200 active:scale-95"
+    title="Recommend Similar"
+  >
+    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+    </svg>
+  </button>
+</div>
+
 
                                                     {/* Genres */}
                                                     <div className="flex flex-wrap gap-2">
@@ -295,7 +312,7 @@ export default function MoviesPage() {
                                                     </div>
 
                                                     {/* Button */}
-                                                    <button
+                                                    {/* <button
                                                         onClick={(e) => {
                                                             e.stopPropagation();
                                                             getRecommendations(movie.title);
@@ -308,7 +325,7 @@ export default function MoviesPage() {
                                                             </svg>
                                                             Recommend Similar
                                                         </span>
-                                                    </button>
+                                                    </button> */}
                                                 </div>
                                             </div>
                                         </div>
