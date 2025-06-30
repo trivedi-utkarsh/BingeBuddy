@@ -222,7 +222,7 @@ export default function MoviesPage() {
                     >
                         {/* Modal Header */}
                         <div className="flex justify-between items-center p-6 border-b border-slate-700/50 bg-gradient-to-r from-slate-800/50 to-slate-700/50">
-                            <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">
+                            <h2 className="text-2xl font-bold bg-gradient-to-r from-red-700 to-orange-600 bg-clip-text text-transparent">
                                 Recommendations for "{selectedMovieName}"
                             </h2>
                             <button
