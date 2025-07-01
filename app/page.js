@@ -73,7 +73,7 @@ export default function Home() {
 				<h1 className="font-fancy font-bold text-2xl md:text-5xl text-center text-white mb-4">
 					Welcome to
 				</h1>
-				<h1 className="font-fancy font-bold text-2xl md:text-5xl text-center text-red-600 text-transparent mb-4">
+				<h1 className="font-fancy font-bold text-2xl md:text-5xl text-center text-red-600 mb-4">
 					BingeBuddy
 				</h1>
 				<p className="text-white text-center text-lg max-w-2xl mx-auto mt-10">
