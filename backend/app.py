@@ -99,7 +99,7 @@ def get_movie_by_id(movie_id):
 @app.route('/movies', methods=['GET'])
 def get_movies():
     result = movies[['movie_id', 'title', 'release_date', 'genres']] \
-        .sample(n=3000, random_state=None) \
+        .sample(n=20, random_state=None) \
         .to_dict(orient='records')
     return jsonify(result)
 
@@ -113,7 +113,7 @@ def recommend(movie_title):
     distances = sorted(list(enumerate(similarity[index])), reverse=True, key=lambda x: x[1])
     recommended = []
 
-    for i in distances[1:6]:  # Top 5 excluding the movie itself
+    for i in distances[1:9]:  # Top 5 excluding the movie itself
         movie_row = movies.iloc[i[0]]
 
         movie_info = {

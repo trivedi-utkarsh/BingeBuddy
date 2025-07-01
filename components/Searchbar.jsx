@@ -166,7 +166,7 @@ const MovieSearchBar = ({ onSearch, onSelectMovie, query = "" }) => {
                     <button
                         type="button"
                         onClick={handleSearch}
-                        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-red-700 to-orange-600 hover:from-blue-700 hover:to-purple-700 text-white p-2.5 rounded-xl transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
+                        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-red-800 hover:from-blue-700 hover:to-purple-700 text-white p-2.5 rounded-xl transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
                     >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5-5 5M6 12h12" />

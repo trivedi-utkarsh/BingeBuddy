@@ -32,26 +32,20 @@ export default function Home() {
 				throw new Error("Network response was not ok");
 			}
 			const data = await response.json();
-			//   for (const movie of data) {
-			//     try {
-			//       const res = await fetch(
-			//         `http://127.0.0.1:5000/fetch-poster/${movie.movie_id}`
-			//       );
-			//       if (!res.ok) {
-			//         throw new Error("Poster fetch failed");
-			//       }
-			//       const posterUrl = await res.text();
-			//       movie.poster = posterUrl;
-			//     } catch {
-			//       movie.poster = "https://via.placeholder.com/500x750?text=No+Image";
-			//     }
-			//   }
-
-			for (const movie of data) {
-				const posterUrl = poster_cache.default[movie.movie_id] || "https://via.placeholder.com/500x750?text=No+Image";
-				movie.poster = posterUrl;
-			}
-
+			  for (const movie of data) {
+			    try {
+			      const res = await fetch(
+			        `http://127.0.0.1:5000/fetch-poster/${movie.movie_id}`
+			      );
+			      if (!res.ok) {
+			        throw new Error("Poster fetch failed");
+			      }
+			      const posterUrl = await res.text();
+			      movie.poster = posterUrl;
+			    } catch {
+			      movie.poster = "https://via.placeholder.com/500x750?text=No+Image";
+			    }
+			  }
 			setMovieData(data);
 			console.log("Fetched movies:", data);
 		} catch (error) {
@@ -67,13 +61,13 @@ export default function Home() {
 	}, []);
 
 	return (
-		<div className="mt-12">
+		<div className="mt-12 scroll-smooth">
 			{/* Page Header */}
 			<div className="max-w-7xl mx-auto mb-12">
 				<h1 className="font-fancy font-bold text-2xl md:text-5xl text-center text-white mb-4">
 					Welcome to
 				</h1>
-				<h1 className="font-fancy font-bold text-2xl md:text-5xl text-center text-red-600 mb-4">
+				<h1 className="font-fancy font-bold text-2xl md:text-5xl text-center text-red-800 mb-4 ">
 					BingeBuddy
 				</h1>
 				<p className="text-white text-center text-lg max-w-2xl mx-auto mt-10">
@@ -90,7 +84,7 @@ export default function Home() {
 			</div>
 
 			{/* Movie Cards Grid */}
-			<div className="max-w-screen mx-auto flex flex-wrap justify-center gap-x-5 gap-y-8">
+			<div className="will-change-transform max-w-7xl mx-auto px-4 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
 				{isLoading
 					? Array.from({ length: 15 }).map((_, index) => (
 						<MovieCardLoading
