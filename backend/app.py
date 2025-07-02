@@ -98,8 +98,9 @@ def get_movie_by_id(movie_id):
 
 @app.route('/movies', methods=['GET'])
 def get_movies():
-    result = movies[['movie_id', 'title', 'release_date', 'genres']] \
-        .sample(n=20, random_state=None) \
+    result = movies.sort_values(by='popularity', ascending=False) \
+        [['movie_id', 'title', 'release_date', 'genres', 'popularity']] \
+        .head(60) \
         .to_dict(orient='records')
     return jsonify(result)
 
