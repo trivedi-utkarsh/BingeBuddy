@@ -61,7 +61,18 @@ export default function Home() {
 	}, []);
 
 	return (
+		
 		<div className="mt-12 scroll-smooth">
+			{/* Logo Top Left */}
+<div className="fixed top-6 left-6 z-50">
+  <button
+    onClick={() => router.push("/")}
+    className="text-red-800 font-fancy font-bold text-3xl transition duration-300 hover:text-red-600 hover:drop-shadow-[0_0_10px_rgba(239,68,68,0.7)]"
+  >
+    BB
+  </button>
+</div>
+
 			{/* Page Header */}
 			<div className="max-w-7xl mx-auto mb-12">
 				<h1 className="font-fancy font-bold text-2xl md:text-5xl text-center text-white mb-4">
@@ -111,6 +122,14 @@ export default function Home() {
 						);
 					})}
 			</div>
+			<footer className="mt-16 py-6 text-center text-gray-400 text-sm border-t border-gray-600">
+  <p className="font-bold font-sans text-lg">
+    Developed by <span className="text-red-800">Kalp Patel, Swayam Bansal, Utkarsh Trivedi</span>
+  </p>
+</footer>
+
+
+
 		</div>
 	);
 }

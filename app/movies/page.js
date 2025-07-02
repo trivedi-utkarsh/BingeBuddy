@@ -5,6 +5,7 @@ import { useEffect, useState, useRef } from "react";
 import MovieSearchBar from "@/components/Searchbar";
 import MovieCard from "@/components/MovieCard";
 import MovieCardLoading from "@/components/MovieCardSkeleton";
+import { useRouter } from "next/navigation";
 
 const poster_cache = await import("../../backend/poster_cache.json", {
   assert: { type: "json" },
@@ -28,6 +29,7 @@ export default function MoviesPage() {
   );
 
   const modalRef = useRef(null);
+const router = useRouter();
 
   useEffect(() => {
     if (query) {
@@ -200,6 +202,15 @@ export default function MoviesPage() {
   };
 
   return (
+    <>
+     <div className="fixed top-6 left-6 z-50">
+    <button
+      onClick={() => router.push("/")}
+      className="text-red-800 font-fancy font-bold text-3xl transition duration-300 hover:text-red-600 hover:drop-shadow-[0_0_10px_rgba(239,68,68,0.7)]"
+    >
+      BB
+    </button>
+  </div>
     <div className="p-4">
       <div className="mb-12 mt-5">
         <MovieSearchBar
@@ -293,5 +304,6 @@ export default function MoviesPage() {
         </div>
       )}
     </div>
+    </>
   );
 }
