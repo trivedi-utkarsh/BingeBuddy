@@ -4,8 +4,8 @@ import MovieSearchBar from "@/components/Searchbar";
 import { useState, useEffect } from "react";
 import MovieCardLoading from "@/components/MovieCardSkeleton";
 import { useRouter } from "next/navigation";
-
-const poster_cache = await import('../backend/poster_cache.json', { assert: { type: 'json' } });
+import Footer from "@/components/Footer";
+import EnhancedLogo from "@/components/Logo";
 
 export default function Home() {
 	const [movieData, setMovieData] = useState([]);
@@ -72,6 +72,7 @@ export default function Home() {
 					BB
 				</button>
 			</div>
+			{/* <EnhancedLogo /> */}
 
 			{/* Page Header */}
 			<div className="max-w-7xl mx-auto mb-12">
@@ -122,11 +123,12 @@ export default function Home() {
 						);
 					})}
 			</div>
-			<footer className="mt-16 py-6 text-center text-gray-400 text-sm border-t border-gray-600">
+			{/* <footer className="mt-16 py-6 text-center text-gray-400 text-sm border-t border-gray-600">
 				<p className="font-bold font-sans text-lg">
 					Developed by <span className="text-red-800">Kalp Patel, Swayam Bansal, Utkarsh Trivedi</span>
 				</p>
-			</footer>
+			</footer> */}
+			<Footer />
 
 
 
