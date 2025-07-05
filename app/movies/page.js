@@ -281,7 +281,7 @@ const router = useRouter();
                         releaseYear={movie.release_date?.split("-")[0] || "N/A"}
                         genre={movie.genres?.join(", ") || "N/A"}
                         onButtonClick={(e) => {
-                          e.stopPropagation();
+                          // e.stopPropagation();
                           getRecommendations(movie.title);
                         }}
                         isLoadingRecommendations={isLoadingRecommendations}
