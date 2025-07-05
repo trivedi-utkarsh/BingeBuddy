@@ -11,14 +11,14 @@ const MovieCardLoading = ({
     const shimmerClass = animate ? "animate-pulse" : "";
 
     return (
-        <div className={`group relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl overflow-hidden shadow-2xl w-80 ${shimmerClass}`}>
+        <div className={`group relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl overflow-hidden shadow-2xl w-[15rem] ${shimmerClass}`}>
             {/* Gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 opacity-50"></div>
 
             {/* Poster Skeleton */}
             {showPoster && (
                 <div className="relative overflow-hidden">
-                    <div className="w-full h-72 bg-gradient-to-br from-slate-700 to-slate-600 relative">
+                    <div className="w-full h-48 bg-gradient-to-br from-slate-700 to-slate-600 relative">
                         {/* Shimmer effect */}
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-500/20 to-transparent animate-shimmer"></div>
 
@@ -31,42 +31,34 @@ const MovieCardLoading = ({
                     </div>
 
                     {/* Year badge skeleton */}
-                    <div className="absolute top-4 right-4 bg-slate-600/80 rounded-full px-3 py-1">
-                        <div className="w-8 h-4 bg-slate-700 rounded"></div>
+                    <div className="absolute top-2 right-2 bg-slate-600/80 rounded-full px-2 py-1">
+                        <div className="w-8 h-3 bg-slate-700 rounded"></div>
                     </div>
                 </div>
             )}
 
             {/* Content Skeleton */}
-            <div className="p-6 space-y-4">
+            <div className="p-4 space-y-2">
                 {/* Movie Title Skeleton */}
                 {showTitle && (
-                    <div className="space-y-2">
-                        <div className="h-6 bg-slate-700 rounded w-3/4"></div>
-                        <div className="h-6 bg-slate-700 rounded w-1/2"></div>
+                    <div className="flex items-start justify-between">
+                        <div className="space-y-1 flex-1">
+                            <div className="h-4 bg-slate-700 rounded w-3/4"></div>
+                            <div className="h-4 bg-slate-700 rounded w-1/2"></div>
+                        </div>
+                        {/* Button skeleton */}
+                        {showButton && (
+                            <div className="ml-2 w-6 h-6 bg-slate-700 rounded-full"></div>
+                        )}
                     </div>
                 )}
 
                 {/* Genre Skeleton */}
                 {showGenres && (
-                    <div className="flex flex-wrap gap-2">
-                        <div className="h-6 bg-slate-700/50 rounded-full w-16 border border-slate-600/50"></div>
-                        <div className="h-6 bg-slate-700/50 rounded-full w-20 border border-slate-600/50"></div>
-                        <div className="h-6 bg-slate-700/50 rounded-full w-12 border border-slate-600/50"></div>
-                    </div>
-                )}
-
-                {/* Button Skeleton */}
-                {showButton && (
-                    <div className="w-full mt-4 h-12 bg-gradient-to-r from-slate-700 to-slate-600 rounded-xl relative overflow-hidden">
-                        {/* Button shimmer */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-500/20 to-transparent animate-shimmer"></div>
-
-                        {/* Button content placeholder */}
-                        <div className="flex items-center justify-center h-full gap-2 opacity-40">
-                            <div className="w-4 h-4 bg-slate-500 rounded"></div>
-                            <div className="w-24 h-4 bg-slate-500 rounded"></div>
-                        </div>
+                    <div className="flex flex-wrap gap-1">
+                        <div className="h-5 bg-slate-700/50 rounded-full w-12 border border-slate-600/50"></div>
+                        <div className="h-5 bg-slate-700/50 rounded-full w-14 border border-slate-600/50"></div>
+                        <div className="h-5 bg-slate-700/50 rounded-full w-10 border border-slate-600/50"></div>
                     </div>
                 )}
             </div>

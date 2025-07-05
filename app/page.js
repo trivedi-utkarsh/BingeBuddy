@@ -32,20 +32,20 @@ export default function Home() {
 				throw new Error("Network response was not ok");
 			}
 			const data = await response.json();
-			  for (const movie of data) {
-			    try {
-			      const res = await fetch(
-			        `http://127.0.0.1:5000/fetch-poster/${movie.movie_id}`
-			      );
-			      if (!res.ok) {
-			        throw new Error("Poster fetch failed");
-			      }
-			      const posterUrl = await res.text();
-			      movie.poster = posterUrl;
-			    } catch {
-			      movie.poster = "https://via.placeholder.com/500x750?text=No+Image";
-			    }
-			  }
+			for (const movie of data) {
+				try {
+					const res = await fetch(
+						`http://127.0.0.1:5000/fetch-poster/${movie.movie_id}`
+					);
+					if (!res.ok) {
+						throw new Error("Poster fetch failed");
+					}
+					const posterUrl = await res.text();
+					movie.poster = posterUrl;
+				} catch {
+					movie.poster = "https://via.placeholder.com/500x750?text=No+Image";
+				}
+			}
 			setMovieData(data);
 			console.log("Fetched movies:", data);
 		} catch (error) {
@@ -61,17 +61,17 @@ export default function Home() {
 	}, []);
 
 	return (
-		
+
 		<div className="mt-12 scroll-smooth">
 			{/* Logo Top Left */}
-<div className="fixed top-6 left-6 z-50">
-  <button
-    onClick={() => router.push("/")}
-    className="text-red-800 font-fancy font-bold text-3xl transition duration-300 hover:text-red-600 hover:drop-shadow-[0_0_10px_rgba(239,68,68,0.7)]"
-  >
-    BB
-  </button>
-</div>
+			<div className="fixed top-6 left-6 z-50">
+				<button
+					onClick={() => router.push("/")}
+					className="text-red-800 font-fancy font-bold text-3xl transition duration-300 hover:text-red-600 hover:drop-shadow-[0_0_10px_rgba(239,68,68,0.7)]"
+				>
+					BB
+				</button>
+			</div>
 
 			{/* Page Header */}
 			<div className="max-w-7xl mx-auto mb-12">
@@ -123,10 +123,10 @@ export default function Home() {
 					})}
 			</div>
 			<footer className="mt-16 py-6 text-center text-gray-400 text-sm border-t border-gray-600">
-  <p className="font-bold font-sans text-lg">
-    Developed by <span className="text-red-800">Kalp Patel, Swayam Bansal, Utkarsh Trivedi</span>
-  </p>
-</footer>
+				<p className="font-bold font-sans text-lg">
+					Developed by <span className="text-red-800">Kalp Patel, Swayam Bansal, Utkarsh Trivedi</span>
+				</p>
+			</footer>
 
 
 
