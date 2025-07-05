@@ -6,6 +6,7 @@ import MovieSearchBar from "@/components/Searchbar";
 import MovieCard from "@/components/MovieCard";
 import MovieCardLoading from "@/components/MovieCardSkeleton";
 import { useRouter } from "next/navigation";
+import Footer from "@/components/Footer";
 
 export default function MoviesPage() {
     const searchParams = useSearchParams();
@@ -343,6 +344,7 @@ export default function MoviesPage() {
                     </div>
                 )}
             </div>
+            <Footer />
         </>
     );
 }
