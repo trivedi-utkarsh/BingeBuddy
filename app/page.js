@@ -6,21 +6,26 @@ import MovieCardLoading from "@/components/MovieCardSkeleton";
 import { useRouter } from "next/navigation";
 import Footer from "@/components/Footer";
 import EnhancedLogo from "@/components/Logo";
+import NavigationLoader from "@/components/NavigationLoader";
 
 export default function Home() {
 	const [movieData, setMovieData] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
+	const [isNavigating, setIsNavigating] = useState(false);
 	const router = useRouter();
 
 	const handleSearch = (searchTerm) => {
+		setIsNavigating(true);
 		router.push(`/movies?query=${searchTerm}`);
 	};
 
 	const handleSelectMovie = (movie) => {
+		setIsNavigating(true);
 		router.push(`/movies?id=${movie.movie_id}`);
 	};
 
 	const handleRecommendSimilar = (movieName) => {
+		setIsNavigating(true);
 		router.push(`/movies?recommend=${movieName}`);
 	}
 
@@ -61,77 +66,74 @@ export default function Home() {
 	}, []);
 
 	return (
-
-		<div className="mt-12 scroll-smooth">
-			{/* Logo Top Left */}
-			<div className="fixed top-6 left-6 z-50">
-				<button
-					onClick={() => router.push("/")}
-					className="text-red-800 font-fancy font-bold text-3xl transition duration-300 hover:text-red-600 hover:drop-shadow-[0_0_10px_rgba(239,68,68,0.7)]"
-				>
-					BB
-				</button>
-			</div>
-			{/* <EnhancedLogo /> */}
-
-			{/* Page Header */}
-			<div className="max-w-7xl mx-auto mb-12">
-				<h1 className="font-fancy font-bold text-2xl md:text-5xl text-center text-white mb-4">
-					Welcome to
-				</h1>
-				<h1 className="font-fancy font-bold text-2xl md:text-5xl text-center text-red-800 mb-4 ">
-					BingeBuddy
-				</h1>
-				<p className="text-white text-center text-lg max-w-2xl mx-auto mt-10">
-					We know what you'll love—because it's built just for you
-				</p>
-
-				{/* Search Bar */}
-				<div className="mb-12 mt-5">
-					<MovieSearchBar
-						onSearch={handleSearch}
-						onSelectMovie={handleSelectMovie}
-					/>
+		<>
+			{/* Navigation Loader */}
+			{isNavigating && <NavigationLoader />}
+			
+			<div className="mt-12 scroll-smooth">
+				{/* Logo Top Left */}
+				<div className="fixed top-6 left-6 z-50">
+					<button
+						onClick={() => router.push("/")}
+						className="text-red-800 font-fancy font-bold text-3xl transition duration-300 hover:text-red-600 hover:drop-shadow-[0_0_10px_rgba(239,68,68,0.7)]"
+					>
+						BB
+					</button>
 				</div>
-			</div>
+				{/* <EnhancedLogo /> */}
 
-			{/* Movie Cards Grid */}
-			<div className="will-change-transform max-w-7xl mx-auto px-4 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-				{isLoading
-					? Array.from({ length: 15 }).map((_, index) => (
-						<MovieCardLoading
-							key={index}
-							showTitle={true}
-							showGenres={true}
-							showButton={true}
+				{/* Page Header */}
+				<div className="max-w-7xl mx-auto mb-12">
+					<h1 className="font-fancy font-bold text-2xl md:text-5xl text-center text-white mb-4">
+						Welcome to
+					</h1>
+					<h1 className="font-fancy font-bold text-2xl md:text-5xl text-center text-red-800 mb-4 ">
+						BingeBuddy
+					</h1>
+					<p className="text-white text-center text-lg max-w-2xl mx-auto mt-10">
+						We know what you'll love—because it's built just for you
+					</p>
+
+					{/* Search Bar */}
+					<div className="mb-12 mt-5">
+						<MovieSearchBar
+							onSearch={handleSearch}
+							onSelectMovie={handleSelectMovie}
 						/>
-					))
-					: movieData.map((movie, index) => {
-						return (
-							<MovieCard
-								key={movie.movie_id || index}
-								poster={movie.poster}
-								movieName={movie.title}
-								releaseYear={
-									movie.release_date
-										? movie.release_date.split("-")[0]
-										: "N/A"
-								}
-								genre={movie.genres ? movie.genres.join(", ") : "N/A"}
-								onButtonClick={() => handleRecommendSimilar(movie.title)}
+					</div>
+				</div>
+
+				{/* Movie Cards Grid */}
+				<div className="will-change-transform max-w-7xl mx-auto px-4 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+					{isLoading
+						? Array.from({ length: 15 }).map((_, index) => (
+							<MovieCardLoading
+								key={index}
+								showTitle={true}
+								showGenres={true}
+								showButton={true}
 							/>
-						);
-					})}
+						))
+						: movieData.map((movie, index) => {
+							return (
+								<MovieCard
+									key={movie.movie_id || index}
+									poster={movie.poster}
+									movieName={movie.title}
+									releaseYear={
+										movie.release_date
+											? movie.release_date.split("-")[0]
+											: "N/A"
+									}
+									genre={movie.genres ? movie.genres.join(", ") : "N/A"}
+									onButtonClick={() => handleRecommendSimilar(movie.title)}
+								/>
+							);
+						})}
+				</div>
+				
+				<Footer />
 			</div>
-			{/* <footer className="mt-16 py-6 text-center text-gray-400 text-sm border-t border-gray-600">
-				<p className="font-bold font-sans text-lg">
-					Developed by <span className="text-red-800">Kalp Patel, Swayam Bansal, Utkarsh Trivedi</span>
-				</p>
-			</footer> */}
-			<Footer />
-
-
-
-		</div>
+		</>
 	);
 }
