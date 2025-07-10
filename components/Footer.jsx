@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <footer className="relative mt-16 py-8 text-center text-gray-400 text-sm border-t border-gray-600 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
+        <footer className="relative mt-16 py-8 text-center text-gray-400 text-sm border-t border-gray-800 bg-slate-800/60 overflow-hidden">
             {/* Animated background elements */}
             <div className="absolute inset-0 opacity-20">
                 <div className="absolute top-0 left-1/4 w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
@@ -53,10 +53,10 @@ const Footer = () => {
                 </p>
 
                 <div className="flex flex-wrap justify-center gap-4 mb-4">
-                    <div className="group relative px-6 py-2 rounded-full bg-gradient-to-r from-red-900/50 to-red-700/50 border border-red-500/30 backdrop-blur-sm transition-all duration-700 ease-out hover:from-red-800/70 hover:to-red-600/70 hover:border-red-400/60 hover:shadow-lg hover:shadow-red-500/30 hover:scale-105 cursor-pointer overflow-hidden min-w-[160px]">
+                    <div className="group relative px-6 py-2 rounded-full bg-gradient-to-r from-red-900/50 to-red-700/50 border border-red-500/30 backdrop-blur-sm transition-all duration-700 ease-out hover:from-red-800/70 hover:to-red-600/70 hover:border-red-400/60 hover:shadow-sm hover:shadow-red-500/30 hover:scale-105 cursor-pointer overflow-hidden min-w-[160px]">
                         <div className="relative flex items-center justify-center w-full h-full gap-12">
                             <button
-                                className="text-red-300 font-semibold group-hover:text-red-100 transition-all duration-700 ease-out transform group-hover:-translate-x-6"
+                                className="text-white font-semibold group-hover:text-red-100 transition-all duration-700 ease-out transform group-hover:-translate-x-6"
                                 onClick={() => window.open('https://github.com/kalp202')}
                             >
                                 Kalp Patel
@@ -67,10 +67,10 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <div className="group relative px-6 py-2 rounded-full bg-gradient-to-r from-red-900/50 to-red-700/50 border border-red-500/30 backdrop-blur-sm transition-all duration-700 ease-out hover:from-red-800/70 hover:to-red-600/70 hover:border-red-400/60 hover:shadow-lg hover:shadow-red-500/30 hover:scale-105 cursor-pointer overflow-hidden min-w-[160px]">
+                    <div className="group relative px-6 py-2 rounded-full bg-gradient-to-r from-red-900/50 to-red-700/50 border border-red-500/30 backdrop-blur-sm transition-all duration-700 ease-out hover:from-red-800/70 hover:to-red-600/70 hover:border-red-400/60 hover:shadow-sm hover:shadow-red-500/30 hover:scale-105 cursor-pointer overflow-hidden min-w-[160px]">
                         <div className="relative flex items-center justify-center w-full h-full gap-12">
                             <button
-                                className="text-red-300 font-semibold group-hover:text-red-100 transition-all duration-700 ease-out transform group-hover:-translate-x-4"
+                                className="text-white font-semibold group-hover:text-red-100 transition-all duration-700 ease-out transform group-hover:-translate-x-4"
                                 onClick={() => window.open('https://github.com/BansalSwayam')}
                             >
                                 Swayam Bansal
@@ -81,10 +81,10 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <div className="group relative px-6 py-2 rounded-full bg-gradient-to-r from-red-900/50 to-red-700/50 border border-red-500/30 backdrop-blur-sm transition-all duration-700 ease-out hover:from-red-800/70 hover:to-red-600/70 hover:border-red-400/60 hover:shadow-lg hover:shadow-red-500/30 hover:scale-105 cursor-pointer overflow-hidden min-w-[160px]">
+                    <div className="group relative px-6 py-2 rounded-full bg-gradient-to-r from-red-900/50 to-red-700/50 border border-red-500/30 backdrop-blur-sm transition-all duration-700 ease-out hover:from-red-800/70 hover:to-red-600/70 hover:border-red-400/60 hover:shadow-sm hover:shadow-red-500/30 hover:scale-105 cursor-pointer overflow-hidden min-w-[160px]">
                         <div className="relative flex items-center justify-center w-full h-full gap-12">
                             <button
-                                className="text-red-300 font-semibold group-hover:text-red-100 transition-all duration-700 ease-out transform group-hover:-translate-x-4"
+                                className="text-white font-semibold group-hover:text-red-100 transition-all duration-700 ease-out transform group-hover:-translate-x-4"
                                 onClick={() => window.open('https://github.com/trivedi-utkarsh')}
                             >
                                 Utkarsh Trivedi

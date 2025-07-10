@@ -21,7 +21,7 @@ const EnhancedLogo = () => {
         
         {/* Main logo content */}
         <div className="relative px-4 py-3 flex items-center justify-center">
-          <span className="text-red-800 font-bold text-3xl font-fancy tracking-wider transition-all duration-500 group-hover:text-red-600 group-hover:scale-110 group-hover:drop-shadow-[0_0_15px_rgba(239,68,68,0.8)]">
+          <span className="text-red-800 font-bold text-3xl font-fancy tracking-wider transition-all duration-500 group-hover:text-red-600 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(239,68,68,0.8)]">
             BB
           </span>
           
