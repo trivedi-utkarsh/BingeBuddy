@@ -345,7 +345,7 @@ export default function MoviesPage() {
                             {/* Title */}
 
                             <div className="flex items-center justify-between">
-                              <h3 className="text-lg sm:text-xl font-semibold text-white group-hover:text-blue-400 transition-colors duration-200 break-words leading-snug">
+                              <h3 className="text-lg sm:text-xl font-semibold text-white group-hover:text-red-500 transition-colors duration-200 break-words leading-snug">
                                 {movie.title}
                               </h3>
                               <button
