@@ -72,14 +72,22 @@ export default function Home() {
 
       <div className="mt-12 scroll-smooth">
         {/* Logo Top Left */}
-        <div className="absolute top-2 left-10 z-50">
-          <button
-            onClick={() => router.push("/")}
-            className="w-14 h-14 rounded-full text-red-800 font-fancy font-bold text-3xl transition duration-300 hover:text-red-600 hover:drop-shadow-[0_0_10px_rgba(239,68,68,0.7)] flex items-center justify-center"
-          >
-            BB
-          </button>
-        </div>
+<div className="absolute top-2 left-10 z-50">
+  <button
+    onClick={() => router.push("/")}
+    className="w-[140px] h-[140px] rounded-full drop-shadow-[0_0_12px_rgba(239,68,68,0.8)] transition duration-300 flex items-center justify-center hover:drop-shadow-[0_0_14px_rgba(30,58,138,0.8)]"
+  >
+    <img
+      src="/Logo.png"
+      alt="Logo"
+      className="w-full h-full object-contain rounded-full"
+    />
+  </button>
+</div>
+
+
+
+
 
         {/* <EnhancedLogo /> */}
 

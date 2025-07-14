@@ -239,16 +239,20 @@ export default function MoviesPage() {
   };
 
   return (
-    <>
-      <div className="fixed top-6 left-6 z-50">
-        <button
-          onClick={() => router.push("/")}
-          className="text-red-800 font-fancy font-bold text-3xl transition duration-300 hover:text-red-600 hover:drop-shadow-[0_0_10px_rgba(239,68,68,0.7)]"
-        >
-          BB
-        </button>
-      </div>
-      <div className="p-4">
+    <div className="flex flex-col min-h-screen">
+     <div className="absolute top-10 left-20 z-50">
+  <button
+    onClick={() => router.push("/")}
+    className="w-[140px] h-[140px] rounded-full drop-shadow-[0_0_12px_rgba(239,68,68,0.8)] transition duration-300 flex items-center justify-center hover:drop-shadow-[0_0_14px_rgba(30,58,138,0.8)]"
+  >
+    <img
+      src="/Logo.png"
+      alt="Logo"
+      className="w-full h-full object-contain rounded-full"
+    />
+  </button>
+</div>
+      <div className="flex-grow p-4">
         <div className="mb-12 mt-5">
           <MovieSearchBar
             onSearch={handleSearch}
@@ -407,6 +411,6 @@ export default function MoviesPage() {
         )}
       </div>
       <Footer />
-    </>
+    </div>
   );
 }

@@ -96,7 +96,7 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className="flex justify-center items-center gap-6 text-xs text-gray-500">
+                {/* <div className="flex justify-center items-center gap-6 text-xs text-gray-500">
                     <div className="flex items-center gap-1">
                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                         <span>Built with Next.js</span>
@@ -109,7 +109,7 @@ const Footer = () => {
                         <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
                         <span>Made with passion</span>
                     </div>
-                </div>
+                </div> */}
             </div>
 
             {/* Bottom gradient line */}
