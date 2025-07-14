@@ -243,7 +243,7 @@ export default function MoviesPage() {
      <div className="absolute top-10 left-20 z-50">
   <button
     onClick={() => router.push("/")}
-    className="w-[140px] h-[140px] rounded-full drop-shadow-[0_0_12px_rgba(239,68,68,0.8)] transition duration-300 flex items-center justify-center hover:drop-shadow-[0_0_14px_rgba(30,58,138,0.8)]"
+    className="w-[80px] h-[80px] rounded-full drop-shadow-[0_0_3px_rgba(239,68,68,0.8)]  transition-transform duration-300 ease-in-out transform hover:scale-[1.03]  flex items-center justify-center "
   >
     <img
       src="/Logo.png"
@@ -334,7 +334,7 @@ export default function MoviesPage() {
                             <img
                               src={movie.poster}
                               alt={`${movie.title} poster`}
-                              className="w-full h-52 object-cover rounded-t-3xl transition-transform duration-500 group-hover:scale-105 border-b border-slate-600/50"
+                              className="w-full h-52 object-fit rounded-t-3xl transition-transform duration-500 group-hover:scale-105 border-b border-slate-600/50"
                             />
                             {/* Year badge */}
                             <div className="absolute top-2 right-2 bg-red-800 text-white text-xs font-bold px-2 py-1 rounded-full shadow">

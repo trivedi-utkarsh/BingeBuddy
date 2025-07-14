@@ -72,10 +72,10 @@ export default function Home() {
 
       <div className="mt-12 scroll-smooth">
         {/* Logo Top Left */}
-<div className="absolute top-2 left-10 z-50">
+<div className="absolute top-0 left-20 z-50">
   <button
     onClick={() => router.push("/")}
-    className="w-[140px] h-[140px] rounded-full drop-shadow-[0_0_12px_rgba(239,68,68,0.8)] transition duration-300 flex items-center justify-center hover:drop-shadow-[0_0_14px_rgba(30,58,138,0.8)]"
+    className="w-[80px] h-[80px] rounded-full drop-shadow-[0_0_3px_rgba(239,68,68,0.8)]  transition-transform duration-300 ease-in-out transform hover:scale-[1.03]  flex items-center justify-center "
   >
     <img
       src="/Logo.png"

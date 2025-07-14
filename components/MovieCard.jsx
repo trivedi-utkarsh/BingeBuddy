@@ -38,7 +38,7 @@ const MovieCard = ({
             onClick={handleRecommendSimilar}
             disabled={isLoadingRecommendations}
             title="Recommend Similar"
-            className="ml-2 p-1 bg-gradient-to-r from-red-700 to-grey-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-full shadow-md hover:shadow-xl transition-all duration-200 active:scale-95 disabled:opacity-50"
+            className="ml-2 p-1 bg-gradient-to-r from-red-700 to-grey-600 text-white rounded-full shadow-md hover:shadow-xl transition-all duration-200 active:scale-95 disabled:opacity-50"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
